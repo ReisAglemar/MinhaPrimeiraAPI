@@ -1,35 +1,74 @@
 package reis.edu.minhaAPI.domain.model;
 
+import jakarta.persistence.*;
+import java.util.List;
+
+@Entity(name = "tb_users")
 public class User {
 
-    private String name;
-    private Account account;
-    private Card card;
-    private News[] news;
-    private Feature[] features;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-    public User(String name, Account account) {
-        this.name = name;
-        this.account = account;
+    private String name;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    private Account account;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    private Card card;
+
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private List<News> news;
+
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private List<Feature> features;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getName() {
         return name;
     }
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
     public Account getAccount() {
         return account;
+    }
+
+    public void setAccount(Account account) {
+        this.account = account;
     }
 
     public Card getCard() {
         return card;
     }
 
-    public News[] getNews() {
+    public void setCard(Card card) {
+        this.card = card;
+    }
+
+    public List<News> getNews() {
         return news;
     }
 
-    public Feature[] getFeatures() {
+    public void setNews(List<News> news) {
+        this.news = news;
+    }
+
+    public List<Feature> getFeatures() {
         return features;
+    }
+
+    public void setFeatures(List<Feature> features) {
+        this.features = features;
     }
 }

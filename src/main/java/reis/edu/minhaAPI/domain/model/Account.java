@@ -1,15 +1,40 @@
 package reis.edu.minhaAPI.domain.model;
 
+import jakarta.persistence.*;
+import java.math.BigDecimal;
+
+@Entity(name = "tb_account")
 public class Account {
 
-    private String number, agency;
-    private Number balance, limit;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-    public Account() {
+    @Column(unique = true)
+    private String number;
+
+    private String agency;
+
+    @Column(scale = 13, precision = 2)
+    private BigDecimal balance;
+
+    @Column(name = "account_limit",scale = 13, precision = 2)
+    private BigDecimal limit;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getNumber() {
         return number;
+    }
+
+    public void setNumber(String number) {
+        this.number = number;
     }
 
     public String getAgency() {
@@ -20,19 +45,19 @@ public class Account {
         this.agency = agency;
     }
 
-    public Number getBalance() {
+    public BigDecimal getBalance() {
         return balance;
     }
 
-    public void setBalance(Number balance) {
+    public void setBalance(BigDecimal balance) {
         this.balance = balance;
     }
 
-    public Number getLimit() {
+    public BigDecimal getLimit() {
         return limit;
     }
 
-    public void setLimit(Number limit) {
+    public void setLimit(BigDecimal limit) {
         this.limit = limit;
     }
 }

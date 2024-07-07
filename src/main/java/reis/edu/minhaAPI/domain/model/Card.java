@@ -1,11 +1,29 @@
 package reis.edu.minhaAPI.domain.model;
 
+import jakarta.persistence.*;
+import java.math.BigDecimal;
+
+@Entity(name = "tb_cards")
 public class Card {
 
-    private String nunber;
-    private Number limit;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-    public Card() {
+    @Column(unique = true)
+    private String nunber;
+
+
+    @Column(name = "card_limit", scale = 13, precision = 2)
+    private BigDecimal limit;
+
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getNunber() {
@@ -16,11 +34,11 @@ public class Card {
         this.nunber = nunber;
     }
 
-    public Number getLimit() {
+    public BigDecimal getLimit() {
         return limit;
     }
 
-    public void setLimit(Number limit) {
+    public void setLimit(BigDecimal limit) {
         this.limit = limit;
     }
 }
