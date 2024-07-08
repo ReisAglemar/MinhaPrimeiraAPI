@@ -1,6 +1,7 @@
 package reis.edu.minhaAPI.domain.model;
 
 import jakarta.persistence.*;
+
 import java.math.BigDecimal;
 
 @Entity(name = "tb_account")
@@ -18,7 +19,7 @@ public class Account {
     @Column(scale = 2, precision = 13)
     private BigDecimal balance;
 
-    @Column(name = "account_limit",scale = 2, precision = 13)
+    @Column(name = "account_limit", scale = 2, precision = 13)
     private BigDecimal limit;
 
     public Long getId() {

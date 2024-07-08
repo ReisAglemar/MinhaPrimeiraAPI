@@ -1,6 +1,7 @@
 package reis.edu.minhaAPI.domain.model;
 
 import jakarta.persistence.*;
+
 import java.util.List;
 
 @Entity(name = "tb_users")

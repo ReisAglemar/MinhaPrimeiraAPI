@@ -1,6 +1,7 @@
 package reis.edu.minhaAPI.domain.model;
 
 import jakarta.persistence.*;
+
 import java.math.BigDecimal;
 
 @Entity(name = "tb_cards")
